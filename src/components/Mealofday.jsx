@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { ChefHat, Utensils, YoutubeIcon } from "lucide-react";
-
-
 const Mealofday = () => {
     const [meal, setmeal] = useState([]);
 
@@ -15,7 +13,6 @@ const Mealofday = () => {
         const response = await data.json();
         setmeal(response?.meals);
     };
-
     return (
         <>
             <div className="min-h-screen bg-gradient-to-br from-green-100 to-emerald-200 flex items-center justify-center p-4">

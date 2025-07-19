@@ -1,6 +1,6 @@
-import { useState } from "react";
 import logo from "../assets/logo.jpg";
 import { Home, Info, Phone, ShoppingCart } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -15,27 +15,30 @@ const Header = () => {
         {/* Navigation */}
         <nav className="w-full sm:w-auto">
           <ul className="flex flex-wrap justify-center gap-6 text-green-800 font-semibold text-sm sm:text-base">
-            <li className="flex items-center gap-1 hover:text-lime-600 transition-all cursor-pointer">
-              <Home className="w-5 h-5" />
-              Home
-            </li>
+            <Link to="">
+              <li className="flex items-center gap-1 hover:text-lime-600 transition-all cursor-pointer">
+                <Home className="w-5 h-5" />
+                Home
+              </li>
+            </Link>
+            <Link to="aboutus">
             <li className="flex items-center gap-1 hover:text-lime-600 transition-all cursor-pointer">
               <Info className="w-5 h-5" />
               About Us
             </li>
+            </Link>
+
+            <Link to="contactus">
             <li className="flex items-center gap-1 hover:text-lime-600 transition-all cursor-pointer">
               <Phone className="w-5 h-5" />
               Contact Us
             </li>
-            <li className="flex items-center gap-1 hover:text-lime-600 transition-all cursor-pointer">
-              <ShoppingCart className="w-5 h-5" />
-              Cart
-            </li>
+            </Link>
+            
           </ul>
         </nav>
       </div>
     </header>
   );
 };
-
 export default Header;

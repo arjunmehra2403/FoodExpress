@@ -3,7 +3,6 @@ import { UtensilsCrossed } from "lucide-react";
 import Shimmer from "./Shimmer";
 import SearchBar from "./SearchBar";
 import Mealofday from "./Mealofday";
-
 const Body = () => {
     const [data, setdata] = useState([]);
     const [filtered, setfiltered] = useState([]);
@@ -38,7 +37,7 @@ const Body = () => {
             <SearchBar searchtext={searchtext} handleSearch={handleSearch} setsearchtext={setsearchtext} />  {/*Search Bar Imported from SearBar.jsx*/}
 
 
-            <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-7xl mx-auto mt-15">
+            <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-7xl mx-auto mt-15 ">
                 {
                     filtered.map((res) => {
                         return (
@@ -57,6 +56,19 @@ const Body = () => {
                                         {res.strCategoryDescription}
                                     </p>
                                 </div>
+                                <div className="flex justify-center mt-8">
+                                    <button
+                                        className="relative inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-br from-lime-600 via-green-500 to-lime-400 text-white text-base font-semibold shadow-md hover:scale-105 hover:shadow-green-500 transition-all duration-300 ease-in-out border border-green-100 mb-10"
+                                        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                                    >
+                                        <UtensilsCrossed className="w-4 h-4 text-white" />
+                                        <span>Explore More</span>
+                                        <span className="text-lg">🍴</span>
+                                    </button>
+                                </div>
+
+
+
                             </div>
                         );
                     })
@@ -65,5 +77,4 @@ const Body = () => {
         </div>
     );
 };
-
 export default Body;
