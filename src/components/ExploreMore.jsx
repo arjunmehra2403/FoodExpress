@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ExploreMoreAPI } from "../utils/constants";
 import { useParams } from "react-router-dom";
 import { ChefHat, Soup, UtensilsCrossed } from "lucide-react";
+import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
 
 const ExploreMore = () => {
@@ -16,7 +17,7 @@ const ExploreMore = () => {
     const API = ExploreMoreAPI + resId;
     const data = await fetch(API);
     const response = await data.json();
-    console.log(response);
+    console.log(response);  
     setexplore(response.meals);
   };
 
@@ -48,9 +49,11 @@ const ExploreMore = () => {
                     <Soup className="w-5 h-5 text-lime-600" />
                     {res.strMeal}
                   </h2>
+                  <Link to={"/morerecepie/" + res.idMeal }>
                   <button className="mt-3 inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-gradient-to-br from-orange-400 via-lime-500 to-green-400 text-white font-semibold shadow hover:shadow-lg hover:scale-105 transition">
                     View Recipe 🍽️
                   </button>
+                  </Link>
                 </div>
               </div>
             );
