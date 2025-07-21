@@ -6,6 +6,7 @@ import ContactUs from "./components/ContactUs";
 import ErrorRoutes from "./components/ErrorRoutes";
 import ExploreMore from "./components/ExploreMore";
 import ViewRecepie from "./components/ViewRecepie";
+import Menu from "./components/Menu";
 const AppLayout = () => {
   return (
     <div>
@@ -38,6 +39,10 @@ const AppRoutes = createBrowserRouter([
       {
         path:"/morerecepie/:rec_Id",
         element:<ViewRecepie/>,
+      },
+      {
+        path:"/menu",
+        element:<Menu/>
       }
     ]
   },

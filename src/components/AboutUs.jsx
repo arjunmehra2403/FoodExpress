@@ -1,5 +1,6 @@
 import { ChefHat, HeartHandshake, UtensilsCrossed, UsersRound } from "lucide-react";
 import Footer from "./Footer";
+import {Link} from "react-router-dom";
 
 const AboutUs = () => {
   return (
@@ -75,9 +76,11 @@ const AboutUs = () => {
             Whether you're craving spicy curries, cheesy pizzas, or healthy bowls — Food Express
             is here to satisfy your hunger with love and speed.
           </p>
+          <Link to="/menu">
           <button className="mt-3 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full shadow-md transition duration-300">
             Explore Our Menu
           </button>
+          </Link>
         </div>
       </div>
     </div>
