@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ChefHat, Utensils, YoutubeIcon } from "lucide-react";
+import { MealOfTheDay } from "../utils/constants";
 const Mealofday = () => {
     const [meal, setmeal] = useState([]);
  
@@ -8,7 +9,7 @@ const Mealofday = () => {
     }, []);
 
     const fetchMealOfDay = async () => {
-        const API = "https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata";
+        const API = MealOfTheDay;
         const data = await fetch(API);
         const response = await data.json();
         setmeal(response.meals);
