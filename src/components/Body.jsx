@@ -3,6 +3,7 @@ import { UtensilsCrossed } from "lucide-react";
 import Shimmer from "./Shimmer";
 import SearchBar from "./SearchBar";
 import Mealofday from "./Mealofday";
+import {Link} from "react-router-dom";
 const Body = () => {
     const [data, setdata] = useState([]);
     const [filtered, setfiltered] = useState([]);
@@ -41,7 +42,7 @@ const Body = () => {
                 {
                     filtered.map((res) => {
                         return (
-                            <div key={res.idCategory} className="bg-white rounded-2xl shadow-xl hover:shadow-green-300 border border-green-100 overflow-hidden transition-transform hover:scale-105">
+                            <Link key={res.idCategory} to={"/exploremore/" + res.strCategory}><div  className="bg-white rounded-2xl shadow-xl hover:shadow-green-300 border border-green-100 overflow-hidden transition-transform hover:scale-105">
                                 <img
                                     src={res.strCategoryThumb}
                                     alt={res.strCategory}
@@ -56,20 +57,20 @@ const Body = () => {
                                         {res.strCategoryDescription}
                                     </p>
                                 </div>
-                                <div className="flex justify-center mt-8">
+                                {/* <div className="flex justify-center mt-8">
                                     <button
                                         className="relative inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-br from-lime-600 via-green-500 to-lime-400 text-white text-base font-semibold shadow-md hover:scale-105 hover:shadow-green-500 transition-all duration-300 ease-in-out border border-green-100 mb-10"
-                                        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                                        onClick={(()=>{
+                                            console.log("btn clicked");
+                                        })}
                                     >
                                         <UtensilsCrossed className="w-4 h-4 text-white" />
                                         <span>Explore More</span>
                                         <span className="text-lg">🍴</span>
                                     </button>
-                                </div>
-
-
-
+                                </div> */}
                             </div>
+                            </Link>
                         );
                     })
                 }

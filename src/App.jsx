@@ -4,6 +4,7 @@ import AboutUs from "./components/AboutUs";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import ContactUs from "./components/ContactUs";
 import ErrorRoutes from "./components/ErrorRoutes";
+import ExploreMore from "./components/ExploreMore";
 const AppLayout = () => {
   return (
     <div>
@@ -29,6 +30,10 @@ const AppRoutes = createBrowserRouter([
         path: "/contactus",
         element: <ContactUs />,
       },
+      {
+        path:"/exploremore/:resId",
+        element:<ExploreMore/>
+      }
     ]
   },
   {

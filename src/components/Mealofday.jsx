@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ChefHat, Utensils, YoutubeIcon } from "lucide-react";
 const Mealofday = () => {
     const [meal, setmeal] = useState([]);
-
+ 
     useEffect(() => {
         fetchMealOfDay();
     }, []);
@@ -11,7 +11,7 @@ const Mealofday = () => {
         const API = "https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata";
         const data = await fetch(API);
         const response = await data.json();
-        setmeal(response?.meals);
+        setmeal(response.meals);
     };
     return (
         <>
