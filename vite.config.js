@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   build: {
     rollupOptions: {
-      treeshake: false, // ✅ Fixes "object is not extensible" error
+      treeshake: false, 
     },
   },
 });
