@@ -1,21 +1,8 @@
-import { useEffect, useState } from "react";
-import { FetchMenu } from "../utils/constants";
 import { Star, Globe, BadgeDollarSign, UtensilsCrossed } from "lucide-react";
+import useMenu from "../utils/useMenu";
 
 const Menu = () => {
-  const [menu, setmenu] = useState([]);
-
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    const API = FetchMenu;
-    const data = await fetch(API);
-    const response = await data.json();
-    setmenu(response.bbqs);
-  };
-
+  const menu=useMenu();
   return (
     <div className="min-h-screen bg-gradient-to-br from-lime-50 via-green-100 to-lime-50 py-10 px-4 sm:px-10">
       <h1 className="text-4xl sm:text-5xl font-bold text-center text-green-700 mb-10 font-[Poppins] drop-shadow-lg">
@@ -38,7 +25,7 @@ const Menu = () => {
                 <UtensilsCrossed className="text-lime-500" size={20} />
                 {e.name}
               </h2>
-
+              
               <p className="text-gray-600 font-medium line-clamp-2">
                 {e.dsc}
               </p>

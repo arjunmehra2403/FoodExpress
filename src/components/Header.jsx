@@ -2,9 +2,11 @@ import { useState } from "react";
 import logo from "../assets/logo.jpg";
 import { Home, Info, Phone, Menu } from "lucide-react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const onlineStatus = useOnlineStatus();
 
   return (
     <header className="bg-gradient-to-r from-lime-200 via-green-100 to-lime-200 shadow-lg p-4 sticky top-0 z-50">
@@ -33,9 +35,8 @@ const Header = () => {
 
         {/* Navigation */}
         <nav
-          className={`w-full sm:w-auto transition-all duration-300 ${
-            isMenuOpen ? "block" : "hidden"
-          } sm:block`}
+          className={`w-full sm:w-auto transition-all duration-300 ${isMenuOpen ? "block" : "hidden"
+            } sm:block`}
         >
           <ul className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-green-800 font-semibold text-sm sm:text-base mt-2 sm:mt-0">
             <Link to="">
@@ -58,6 +59,53 @@ const Header = () => {
                 Contact Us
               </li>
             </Link>
+
+            <li className="flex items-center gap-2 text-sm font-medium text-green-900 bg-white px-3 py-1 rounded-full shadow-md">
+              Status:
+              <span
+                className={`flex items-center gap-1 px-2 py-1 rounded-full ${onlineStatus ? "bg-green-500 text-white" : "bg-red-500 text-white"
+                  }`}
+              >
+                {onlineStatus ? (
+                  <>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-4 h-4 animate-pulse"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    Online
+                  </>
+                ) : (
+                  <>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-4 h-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                    Offline
+                  </>
+                )}
+              </span>
+            </li>
+
           </ul>
         </nav>
       </div>

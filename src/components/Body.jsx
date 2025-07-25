@@ -1,32 +1,31 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { UtensilsCrossed } from "lucide-react";
 import Shimmer from "./Shimmer";
 import SearchBar from "./SearchBar";
 import Mealofday from "./Mealofday";
 import { Link } from "react-router-dom";
-import { CartAPI } from "../utils/constants";
-import Footer from "./Footer";
-const Body = () => {
-    const [data, setdata] = useState([]);
-    const [filtered, setfiltered] = useState([]);
-    const [searchtext, setsearchtext] = useState("");
-    useEffect(() => {
-        fetchmeal();
-    }, []);
 
-    const fetchmeal = async () => {
-        const API = CartAPI;
-        const fetch_data = await fetch(API);
-        const response = await fetch_data.json();
-        setdata(response?.categories);
-        setfiltered(response?.categories);
-    };
+import Footer from "./Footer";
+import useCartData from "../utils/useCartData";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import OfflineComponent from "./OfflineComponent";
+const Body = () => {
+    const [searchtext, setsearchtext] = useState("");
+    const { data, filtered, setfiltered } = useCartData();
+
     const handleSearch = () => {
         const filtered = data.filter((item) =>
             item.strCategory.toLowerCase().includes(searchtext.toLowerCase())
         );
         setfiltered(filtered);
     };
+    const onlineStatus = useOnlineStatus();
+    if (onlineStatus === false) {
+        return (
+            <OfflineComponent />
+        )
+
+    }
 
     return data.length === 0 ? <Shimmer /> : (
         <>
@@ -68,7 +67,7 @@ const Body = () => {
                 </div>
 
             </div>
-            <Footer/>
+            <Footer />
         </>
     );
 };
